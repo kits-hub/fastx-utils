@@ -1,9 +1,9 @@
 /*****************************************************************************
   fastx-utils.c
 
-  fastx-utils command line interface.  
+  fastx-utils command line interface.
 
-  (c) 2016-2018 - LEI ZHANG
+  (c) 2016-2023 - LEI ZHANG
   Logic Informatics Co.,Ltd.
   zhanglei@logicinformatics.com
   
@@ -59,7 +59,7 @@ static int usage(){
     
     fprintf(stderr, "\n");
     fprintf(stderr, "Usage:   fastx-utils <command> <arguments>\n");
-    fprintf(stderr, "Version: 0.0.1-r2\n\n");
+    fprintf(stderr, "Version: 0.0.2\n\n");
     fprintf(stderr, "Command:\n");
     fprintf(stderr, "      -- FASTA/Q Summary.\n");
     fprintf(stderr, "         view          extract sequence information.\n");

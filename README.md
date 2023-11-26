@@ -1,11 +1,12 @@
-###  atlas-utils: tools for microbiome data analysis
+###  fastx-utils: tools for fasta/q manipulation
+
 <hr>
 
 #### 1. install
 
 ```sh
-git clone https://github.com/jameslz/atlas-utils
-cd atlas-utils
+git clone https://github.com/kits-hub/fastx-utils
+cd fastx-utils
 make
 ```
 
@@ -15,73 +16,62 @@ current: `version：0.0.2`
 
 
 ```text
-    Usage:   atlas-utils <command> <arguments>
-    Version: 0.0.2
+Usage:   fastx-utils <command> <arguments>
+Version: 0.0.2
 
-    Command:
-          -- Fastq manipulation.
-             demultiplex       FASTAQ demultiplex with barcode sequence.
-             uniques           find unique sequences and abundances.
-             linkpairs         link paired-reads with padding 'N'.
-             fqchk             fastq QC (base/quality summary).
-             label             add label to fasta headline.
-             barcode           get barcode seq from paired-reads.
-             orient            orient seq use strand +/- information.
-             maxee             qualtiy control with quality error.
-             primer_strip      retrive sequence region matches to primer pair.
-                               support single end match.
+Command:
+      -- FASTA/Q Summary.
+         view          extract sequence information.
+         fqchk         fastq QC (base/quality summary).
+         joint         link paired-reads with padding 'N'.
+         convert       common transformation of FASTA/Q.
+         info          calculate reads counts/base info.
+         counts        calculate sequence counts.
+         length        discard sequence with length region.
+         avq           calculate average quality and length.
 
-          -- (Z)OTU manipulation.
-             unique_table     construct uniques table using exact match.
-             annotation       annotate OTU table using OTU assignment from Sintax/RDP.
-             filter           1. Filter sequence from Mitochondria/Chloroplast, 2. optional filter
-                              specifed taxon level .
-             level            abundance table for specify taxonomy level. ie. genus.
-             abundance        abundance table for specify taxonomy level and sample. ie. genus.
-             summary          calcuate OTU number/Tag number per sample.
-             rowsum           calcuate row sum.
-             rank             rank/merge for numeric table.
-             krona            convert annotated OTU table to krona text format.
-             quantile         calcuate  nth quantile sample size for otu_table normalization.
-             mean_size        calcuate 'Mean' sample size for otu_table normalization.
-             min_size         calcuate 'Min' sample size for otu_table normalization.
-             max_size         calcuate 'Max' sample size for otu_table normalization.
-             counts2freqs     convert counts table from counts to frequencies.
-             trim             delete low-abundance (Z)OTUs with sum threshold.
-             prune            delete low-abundance (Z)OTUs.with per sample threshold
-             binary           convert (Z)OTUs table to presence/absence values.
-             pairwise         convert (Z)OTUs table to pairwise format for phylocom.
-             rarity           rarity summary.
-             rare             rarefy OTU table to specified number of reads.
-             core             core microbiome per/group.
-             group_by         group_by operation for OTU table, support average, sum.
-             flatten          flatten the zotu table taxonomy annotation.
-             unpack           unpack the sintax classify result.
-             lefse            convert to lefse compatibility format.
-             subgroup         retrieve columns in in list of columns.
-             hierarchy        hierarchy format for classic annotated OTU table.
-             cv               calcuate C.V|Coefficient of Variation.
-             fish             select OTUs using specifed abundance threshold.
-             stack            reshape OTU table for data visulization.
+      -- FASTA/Q retrieve.
+         filter        filter PE reads with Ns and Qs.
+         dedup         deduplication with sequence label.
+         fetch         fetch by specified identifier in command line.
+         reorder       reorder sequence by name.
+         subseq        extract sequence with specified identifier set.
+         uniques       Find uniques sequences.
 
-          -- PICRUSt.
-             normalization    normalize OTU table with 16S copy Number, et..
-             aggregate        merge same hits with sum opt.
-             contrib          calculate feature abundance contribution.
-             melt             calculate feature abundance. ie. KEGG, COG, with Greengene 13.5.
-             kann             calculate feature abundance using feature maps, KO -> Module.
+      -- FASTA/Q Edit.
+         fake          convert fasta to fake fastq with qual.
+         interleave    interleave two PE FASTA/Q files.
+         deinterleave  deinterleave interleaved FASTA/Q file.
+         rename        rename sequence identifier with specified prefix
+                       and then, _1, _2, _3..., return identifier map.
+         label         add a label before/after name to relabel sequence.
+         truncate      truncate sequence to specified length L.
+         comment       add comment information.
+         replace       replace sequence name.
+         strip_stop_codon strip stop codon in AA sequence.
 
-          -- auxiliary utils.
-             view             view text file, ignor comments and blank lines.
-             getline          get target line with headline.
-             subsamples       get target columns with headline match.
-             partition        split OTU table into specify number file.
-             dt2xlsx          convert data table (multi-) file to Excel file..
-             strip            strip any char from first space in first columns.
+      -- FASTA/Q segmentation.
+         partition     partition fasta/q file to N files.
+         shred         shred long sequence with overlapped sequence.
+         split         split fasta/q file with specified size.
+         pseudo        make pseudo-sequence from a fasta file.
+         segment       split pseudo-genome to specified equal part.
+         demux         fastq demultiplex using index.
+         individ       split fasta sequence, one file per sequence.
+
+      -- auxiliary utils.
+         reorient      reorient fastq strandness using reference.
+         revcomp       revcomp DNA sequence.
+         rna2dna       convert RNA to DNA sequence.
+         bed           convert shred location to bed.
+         region-mask   mask base to N/lowcase in bed region.
+         tsv2fasta     tsv convert to fasta.
+         circular      identify circular contigs from SPAdes assembler
+                       and the repeated k-mer found at terminal.
 
 
-    Licenced:
-    (c) 2019-2022 - LEI ZHANG
-    Logic Informatics Co.,Ltd.
-    zhanglei@logicinformatics.com
+Licenced:
+(c) 2016-2023 - LEI ZHANG
+Logic Informatics Co.,Ltd.
+zhanglei@logicinformatics.com
 ```
