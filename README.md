@@ -10,7 +10,7 @@ cd fastx-utils
 make
 ```
 
-#### 2、 interface
+#### 2. interface
 
 current: `version：0.0.2`
 
